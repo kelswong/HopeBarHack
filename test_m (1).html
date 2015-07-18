@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<!-- References:
+http://www.w3schools.com/jquerymobile/
+https://stripe.com/docs/api#intro -->
+
+<html>
+
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+<div data-role="page" id="HomePage">
+
+  <div data-role="header" data-theme="b">>
+  <img border="0" src="http://www.feed3.org/images/content/HopeBar-DCA.png" alt="Logo" style="width: 20%"; t/>
+      
+	  
+    <h1>Hope Heroes!</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+  <p>Buy One, Nourish Two!</p>
+    <p>Thank you for your support of the EM Squared Foundation!Are you ready to purchase one of our standardized whole-food Hope bars? Every time you choose to nourish yourself, a Hope bar is donated to a malnourished child.</p>
+
+    <a href="#BuyPage" class="ui-btn ui-btn-inline ui-btn-b ui-corner-all">Buy</a>
+	<a href="#DonatePage" class="ui-btn ui-btn-inline ui-btn-b ui-corner-all">Donate</a>
+	<a href="#LearnMore" class="ui-btn ui-btn-inline ui-btn-b ui-corner-all">Learn More</a>
+  </div>
+
+  <div data-role="footer" data-theme="b">
+    <h1>Hope Heroes App., 2015. All rights reserved</h1>
+  </div>
+</div> 
+
+
+ 
+  
+  
+  
+
+<div data-role="page" id="BuyPage">
+  <div data-role="header" data-theme="b">>
+   <img border="0" src="http://www.feed3.org/images/content/HopeBar-DCA.png" alt="Logo" style="width: 20%"; t/>
+    <h1>Ready to buy???</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+     <form method="post" action="demoform.asp">
+      <div class="ui-field-contain">
+        <label for="fullname">Full name:</label>
+        <input type="text" name="fullname" id="fullname">       
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address">
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" placeholder="Your email..">
+		<label for="quantity">Purchase Quantity:</label>
+        <input type="text" name="quantity" id="quantity">
+      </div>
+      
+    </form>
+	
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<button id="customButton">Purchase</button>
+ 
+<form>
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+    image: '/img/documentation/checkout/marketplace.png',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Stripe.com',
+      description: '2 widgets',
+      amount: 2000
+    });
+    e.preventDefault();
+  });
+
+ // Close Checkout on page navigation
+   // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+   handler.close()
+  });
+</script>
+</form>
+
+
+
+<a href="#Thankyou" class="ui-btn ui-btn-inline ui-btn-b ui-corner-all">Done</a>
+
+
+  </div>
+
+  <div data-role="footer" data-theme="b">
+    <h1>Hope Heroes App., 2015. All rights reserved</h1>
+  </div>
+</div> 
+
+
+
+
+<div data-role="page" id="DonatePage">
+  <div data-role="header" data-theme="b">>>
+   <img border="0" src="http://www.feed3.org/images/content/HopeBar-DCA.png" alt="Logo" style="width: 20%"; t/>
+    <h1>Donating</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+     <form method="post" action="demoform.asp">
+      <div class="ui-field-contain">
+        <label for="fullname">Full name:</label>
+        <input type="text" name="fullname" id="fullname">       
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address">
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" id="email" placeholder="Your email..">
+		<label for="quantity">Purchase Quantity:</label>
+        <input type="text" name="quantity" id="quantity">
+      </div>
+      
+    </form>
+	<p> Choose Payment options:</p>
+	
+	
+
+
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<button id="customButtondon">Donate</button>
+ 
+
+<form>
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+    image: '/img/documentation/checkout/marketplace.png',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('#customButtondon').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Stripe.com',
+      description: '2 widgets',
+      amount: 5000
+    });
+    
+	
+  });
+  
+
+ // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+  handler.close()
+  
+  });
+ </script>
+
+</form>
+
+<a href="#Thankyou" class="ui-btn ui-btn-inline ui-btn-b ui-corner-all">Done</a>
+
+
+	
+  </div>
+
+  <div data-role="footer" data-theme="b">
+    <h1>Hope Heroes App., 2015. All rights reserved</h1>
+  </div>
+</div> 
+
+
+
+
+<div data-role="page" id="LearnMore">
+
+  <div data-role="header" data-theme="b">>>
+   <img border="0" src="http://www.feed3.org/images/content/HopeBar-DCA.png" alt="Logo" style="width: 20%"; t/>
+    <h1>Hope Heroes is a supporting platform for a social cause to fight malnutrition a collaborative caused between Hope Bar and EM2D???</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Learn more about the cause</p>
+    <a href="http://www.barofhope.com/" target= "_blank">Click here!</a>
+  </div>
+
+  <div data-role="footer" data-theme="b">
+    <h1>Hope Heroes App., 2015. All rights reserved</h1>
+  </div>
+</div> 
+
+
+<div data-role="page" id="Thankyou">
+  <div data-role="header" data-theme="b">
+  <img border="0" src="http://www.feed3.org/images/content/HopeBar-DCA.png" alt="Logo" style="width: 20%"; t/>
+    
+  <h1>Thank you for buying hope bars! Your contribution will help save kids from malnutrition!</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Thank You for your purchase! </p>
+    <p> Find out how you can help more by being a social entrepreneur for Hope bars. To learn how you can contribute to the cause and earn while doing so...</p>
+	<a href="http://www.barofhope.com/" target= "_blank">Click here!</a>
+  </div>
+
+  <div data-role="footer" data-theme="b">
+    <h1>Hope Heroes App., 2015. All rights reserved</h1>
+  </div>
+</div> 
+
+</body>
+</html>

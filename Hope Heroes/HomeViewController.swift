@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Hope Heroes
 //
 //  Created by Kelsey Wong on 7/17/15.
@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +19,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet weak var UsernameField: UITextField!
+    @IBOutlet weak var PasswordField: UITextField!
 
 }
 
